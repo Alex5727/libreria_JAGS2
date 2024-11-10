@@ -17,5 +17,11 @@ namespace libreria_JAGS.Data.Models
         public string Autor { get; set; }
         public string CoverUrl { get; set; }
         public DateTime DateAdded { get; set; }
+ 
+        //Propiedades de navegacion
+        public int PublisherID { get; set; }
+        public Publisher Publisher { get; set; }
+
+
     }
 }
