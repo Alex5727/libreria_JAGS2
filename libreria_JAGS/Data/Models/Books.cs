@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using libreria_JAGS.Data.Models;
 
 namespace libreria_JAGS.Data.Models
 {
@@ -17,11 +18,13 @@ namespace libreria_JAGS.Data.Models
         public string Autor { get; set; }
         public string CoverUrl { get; set; }
         public DateTime DateAdded { get; set; }
- 
+
         //Propiedades de navegacion
-        public int PublisherID { get; set; }
+        public int PublisherId { get; set; }
         public Publisher Publisher { get; set; }
+
         public List<Book_Author> Book_Authors { get; set; }
+
 
 
     }

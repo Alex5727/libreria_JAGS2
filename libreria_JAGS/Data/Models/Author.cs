@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using libreria_JAGS.Data.Models;
 
 namespace libreria_JAGS.Data.Models
 {
