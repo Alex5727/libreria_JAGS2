@@ -21,6 +21,7 @@ namespace libreria_JAGS.Data.Models
         //Propiedades de navegacion
         public int PublisherID { get; set; }
         public Publisher Publisher { get; set; }
+        public List<Book_Author> Book_Authors { get; set; }
 
 
     }
