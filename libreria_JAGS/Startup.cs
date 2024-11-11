@@ -1,5 +1,6 @@
 using libreria_JAGS.Data;
 using libreria_JAGS.Data.Models.Services;
+using libreria_JAGS.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,8 @@ namespace libreria_JAGS
 
             //Configurar servicios
             services.AddTransient<BooksService>();
+            services.AddTransient<AuthorsService>();
+            services.AddTransient<PublisherService>();
             
             services.AddSwaggerGen(c =>
             {
@@ -65,7 +68,7 @@ namespace libreria_JAGS
             {
                 endpoints.MapControllers();
             });
-            AppDbInitializer.Seed(app);
+            //AppDbInitializer.Seed(app);
         }
     }
 }
