@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,7 +14,13 @@ namespace libreria_JAGS.Data.ViewModels
         public DateTime? DataRead { get; set; }
         public int? Rate { get; set; }
         public string Genero { get; set; }
-        public string Autor { get; set; }
         public string CoverUrl { get; set; }
+
+        public int PublisherID { get; set; }
+
+        public List<int> AutorIDs {get; set;}
+
+
+
     }
 }
