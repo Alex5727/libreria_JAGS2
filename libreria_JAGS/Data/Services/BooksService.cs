@@ -50,7 +50,22 @@ namespace libreria_JAGS.Data.Models.Services
         //Metodo que nos permite listar todos los libros de la db
         public List<Books> GetAllBks()=> _context.Books.ToList();
         //Metodo que nos permite obtener un libro por id de la db
-        public Books GetBookById(int bookid) => _context.Books.FirstOrDefault(n => n.id == bookid);
+        public BookWithAuthorsVM GetBookById(int bookid)
+        {
+            var _bookWithAuthors = _context.Books.Where(n => n.id == bookid).Select(book => new BookWithAuthorsVM()
+            {
+                Titulo = book.Titulo,
+                Descripccion = book.Descripccion,
+                IsRead = book.IsRead,
+                DataRead = book.DataRead,
+                Rate = book.Rate,
+                Genero = book.Genero,
+                CoverUrl = book.CoverUrl,
+                PublisherName = book.Publisher.Name,
+                AutorNames = book.Book_Authors.Select(n => n.Author.FullName).ToList()
+            }).FirstOrDefault();
+            return _bookWithAuthors;
+        }
 
         //Metodo que nos permite modificar un libro de la db
         public Books UpdateBookByID(int bookid, BookVM book)
