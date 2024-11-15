@@ -27,5 +27,15 @@ namespace libreria_JAGS.Data.Services
             _context.Authors.Add(_author);
             _context.SaveChanges();
         }
+
+        public AuthorWithBookVM GetAuthorWithBook(int authorId)
+        {
+            var _author = _context.Authors.Where(n => n.Id == authorId).Select(n => new AuthorWithBookVM()
+            {
+                FullName = n.FullName,
+                BookTitles = n.Book_Authors.Select(n => n.Book.Titulo).ToList()
+            }).FirstOrDefault();
+            return _author;
+        }
     }
 }

@@ -27,5 +27,11 @@ namespace libreria_JAGS.Controllers
             return Ok();
         }
 
+        [HttpGet("get-author-with-books-by-id/(id)")]
+        public IActionResult GetAuthorsWithBooks(int id)
+        {
+           var resonse = _authorsServices.GetAuthorWithBook(id);
+            return Ok(resonse);
+        }
     }
 }
