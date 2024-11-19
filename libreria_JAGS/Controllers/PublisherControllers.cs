@@ -13,25 +13,32 @@ namespace libreria_JAGS.Controllers
     [ApiController]
     public class PublisherControllers : ControllerBase
     {
-        private PublisherControllers _publisherControllers;
+        private PublisherService _publishersService;
 
-        public PublisherControllers(PublisherControllers publisherControllers)
+        public PublisherControllers(PublisherService PublishersService)
         {
-            _publisherControllers = publisherControllers;
+            _publishersService = PublishersService;
         }
 
         [HttpPost("add-publisher")]
         public IActionResult AddPublisher([FromBody] PublisherVM publisher)
         {
-            _publisherControllers.AddPublisher(publisher);
+            _publishersService.AddPublisher(publisher);
             return Ok();
         }
 
         [HttpGet("get-publisher-books-with-authors/{id}")]
         public IActionResult GetPublisherData(int id)
         {
-            var _response = _publisherControllers.GetPublisherData(id);
+            var _response = _publishersService.GetPublisherData(id);
             return Ok(_response);
+        }
+
+        [HttpDelete("delete-publisher-by-id/{id}")]
+        public IActionResult DeletePublisherById(int id)
+        {
+            _publishersService.DeletePublisherById(id);
+            return Ok();
         }
 
     }

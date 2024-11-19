@@ -42,5 +42,16 @@ namespace libreria_JAGS.Data.Services
                 }).FirstOrDefault();
             return _publisherData;
         }
+
+        internal void DeletePublisherById(int id)
+        {
+            var _publisher = _context.Publishers.FirstOrDefault(n => n.Id == id);
+            if (_publisher != null)
+            {
+                _context.Publishers.Remove(_publisher);
+                _context.SaveChanges();
+            }
+        }
+
     }
 }
