@@ -1,8 +1,10 @@
 ﻿using libreria_JAGS.Data.Models;
 using libreria_JAGS.Data.ViewModels;
+using libreria_JAGS.Exeptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace libreria_JAGS.Data.Services
@@ -20,6 +22,8 @@ namespace libreria_JAGS.Data.Services
         //Metodo que nos permite agregar una nueva editora  en la db
         internal Publisher AddPublisher(PublisherVM publisher)
         {
+            if (stringStartsWithNumber(publisher.Name)) throw new PublisherNameException("El nombre empieza con un número",
+                publisher.Name);
             var _publisher = new Publisher()
             {
                 Name = publisher.Name
@@ -60,6 +64,13 @@ namespace libreria_JAGS.Data.Services
                 throw new Exception($"La editora con el id {id} no existe!");
             }
         }
+
+        private bool stringStartsWithNumber(string name)
+        {
+            if (Regex.IsMatch(name, @"^\d")) return true;
+            return false;
+        }
+
 
     }
 }

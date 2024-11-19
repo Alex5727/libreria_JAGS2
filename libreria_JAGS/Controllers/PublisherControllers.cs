@@ -1,5 +1,6 @@
 ﻿using libreria_JAGS.Data.Services;
 using libreria_JAGS.Data.ViewModels;
+using libreria_JAGS.Exeptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -27,6 +28,10 @@ namespace libreria_JAGS.Controllers
             {
                 var newPublisher = _publishersService.AddPublisher(publisher);
                 return Created(nameof(AddPublisher), newPublisher);
+            }
+            catch(PublisherNameException ex)
+            {
+                return BadRequest($"{ex.Message}, Nombre de la editora: {ex.PublisherName}");
             }
             catch(Exception ex)
             {
