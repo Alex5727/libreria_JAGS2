@@ -55,6 +55,10 @@ namespace libreria_JAGS.Data.Services
                 _context.Publishers.Remove(_publisher);
                 _context.SaveChanges();
             }
+            else
+            {
+                throw new Exception($"La editora con el id {id} no existe!");
+            }
         }
 
     }
